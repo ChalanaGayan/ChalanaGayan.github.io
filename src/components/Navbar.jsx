@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { menu, close } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -40,10 +40,10 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt='logo' className='w-40 h-auto object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex '>
-            &nbsp;
-            <span className='sm:block hidden'> My Portfolio</span>
+          {/* <img src={logo} alt='logo' className='w-40 h-auto object-contain' /> */}
+          <p className='text-white text-[18px]  font-bold cursor-pointer flex '>
+
+            <span className='sm:block hidden'> My Portfolio | Chalana Gayan</span>
           </p>
         </Link>
 
@@ -51,8 +51,8 @@ const Navbar = () => {
           {navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={`${active === nav.title ? "text-white" : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer`}
+              className={`${active === nav.title ? "text-white" : "text-white"
+                } hover:text-blue-400 text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>
@@ -76,7 +76,7 @@ const Navbar = () => {
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-secondary"
+                  className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-white"
                     }`}
                   onClick={() => {
                     setToggle(!toggle);

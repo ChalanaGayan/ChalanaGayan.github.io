@@ -19,7 +19,8 @@ module.exports = {
         xs: "450px",
       },
       backgroundImage: {
-        "hero-pattern": "url('/src/assets/background.jpg')",
+
+        "hero-pattern": "linear-gradient(180deg, #000000, #050373,#000000)",
       },
     },
   },

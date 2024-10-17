@@ -1,6 +1,14 @@
 import {
+    ieee,
+    ml,
+
+    asp,
+    next,
+
+    uni,
+
     mobile,
-    backend,
+
     creator,
     web,
     javascript,
@@ -15,9 +23,7 @@ import {
     git,
     figma,
     docker,
-    meta,
-    starbucks,
-    tesla,
+
     shopify,
     carrent,
     jobit,
@@ -32,7 +38,7 @@ export const navLinks = [
     },
     {
         id: "work",
-        title: "Work",
+        title: "Projects",
     },
     {
         id: "contact",
@@ -42,16 +48,16 @@ export const navLinks = [
 
 const services = [
     {
-        title: "Web Developer",
-        icon: web,
-    },
-    {
-        title: "React Native Developer",
+        title: "AI/ML Enthusiast",
         icon: mobile,
     },
     {
+        title: "Frontend Developer",
+        icon: web,
+    },
+    {
         title: "Backend Developer",
-        icon: backend,
+        icon: web,
     },
     {
         title: "Content Creator",
@@ -80,13 +86,21 @@ const technologies = [
         name: "React JS",
         icon: reactjs,
     },
-    {
-        name: "Redux Toolkit",
-        icon: redux,
-    },
+    // {
+    //     name: "Redux Toolkit",
+    //     icon: redux,
+    // },
     {
         name: "Tailwind CSS",
         icon: tailwind,
+    },
+    {
+        name: "ASP.NET Core",
+        icon: asp,
+    },
+    {
+        name: "Next JS",
+        icon: next,
     },
     {
         name: "Node JS",
@@ -116,58 +130,96 @@ const technologies = [
 
 const experiences = [
     {
-        title: "React.js Developer",
-        company_name: "Starbucks",
-        icon: starbucks,
-        iconBg: "#383E56",
-        date: "March 2020 - April 2021",
+        title: "Train Booking System (Academic)",
+        company_name: "University of Moratuwa",
+        icon: uni,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2024 - Ongoing",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Developing a Train Booking System that allows users to search for trains, select seats, and complete bookings through a user-friendly interface.",
+            "Utilizing technologies like Node.js, Express, React, and MySQL.",
         ],
     },
     {
-        title: "React Native Developer",
-        company_name: "Tesla",
-        icon: tesla,
-        iconBg: "#E6DEDD",
-        date: "Jan 2021 - Feb 2022",
+        title: "Banking System - DBMS (Academic)",
+        company_name: "University of Moratuwa",
+        icon: uni,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2022",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Created a Database Management System for a banking system, featuring transaction handling, user lanes, and a user-friendly interface.",
+            "Built with HTML/CSS/JavaScript, MySQL, and React Native.",
         ],
     },
     {
-        title: "Web Developer",
-        company_name: "Shopify",
-        icon: shopify,
-        iconBg: "#383E56",
-        date: "Jan 2022 - Jan 2023",
+        title: "MechaPulse (Competition)",
+        company_name: "IoT Competition",
+        icon: ml,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2023",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Developed an IoT solution leveraging machine learning to detect and identify machine faults based on sound analysis.",
+            "Technologies: Python, OpenCV, JavaScript, Flask, Node.js, MQTT.",
         ],
     },
     {
-        title: "Full stack Developer",
-        company_name: "Meta",
-        icon: meta,
-        iconBg: "#E6DEDD",
-        date: "Jan 2023 - Present",
+        title: "Taprobanz - Ecommerce Platform",
+        company_name: "Client Project",
+        icon: shopify,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2024 - Ongoing",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Designing and developing an e-commerce website using WooCommerce and WordPress, tailored to meet the client's business needs.",
+            "Technologies: WordPress, WooCommerce, PHP.",
+        ],
+    },
+    {
+        title: "Library Management System - Basic CRUD/Auth",
+        company_name: "University of Moratuwa",
+        icon: typescript,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2024",
+        points: [
+            "Built a web application for managing library resources with CRUD operations and user authentication.",
+            "Technologies: ASP.NET Core Web API, React (TypeScript), Tailwind CSS, Ant Design.",
+        ],
+    },
+    {
+        title: "IEEE Challenge Sphere - Website",
+        company_name: "IEEE - Sri Lanka Section",
+        icon: ieee,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2024",
+        points: [
+            "Developed a website to showcase details about the IEEE Challenge competition.",
+            "Technologies: ReactJS, GitHub Pages.",
+        ],
+    },
+    {
+        title: "4-bit Micro Processor (Academic)",
+        company_name: "University of Moratuwa",
+        icon: uni,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2022",
+        points: [
+            "Developed a simple processor capable of executing basic instructions using the BASYS2 micro-controller.",
+            "Technologies: Xilinx ISE.",
+        ],
+    },
+    {
+        title: "RPAL Language Compiler (Academic)",
+        company_name: "University of Moratuwa",
+        icon: uni,  // Reusing existing icon
+        iconBg: "#FFFFFF",  // White background
+        date: "2022",
+        points: [
+            "Developed a C++ compiler for RPAL to parse, generate AST, compile, and execute RPAL code.",
+            "Technologies: C++, Compiler Design Techniques.",
         ],
     },
 ];
+
+
 
 const testimonials = [
     {

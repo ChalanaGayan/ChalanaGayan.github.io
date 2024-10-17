@@ -30,7 +30,19 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import ieee from "./company/n-ieee.png";
+import ml from "./company/n-ml.png";
+import train from "./company/n-train.png";
+import uni from "./company/n-uni.png";
+
+import asp from "./tech/ASP.png"
+import next from "./tech/next-js.svg"
 export {
+  asp, next,
+  ieee,
+  ml,
+  train,
+  uni,
   logo,
   backend,
   creator,
