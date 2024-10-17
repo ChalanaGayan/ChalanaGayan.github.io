@@ -15,7 +15,7 @@ const Contact = () => {
         <p className="text-gray-300 font-mono font-medium mb-4 text-center">Connect with Me</p>
         <h3 className="text-6xl text-white font-bold mb-6 text-center pb-10">Social Links</h3>
 
-        <ul className="flex flex-row justify-center gap-10 pb-3">
+        <ul className="flex flex-col md:flex-row justify-center gap-10 pb-3">
           <li className="flex items-center">
             <FontAwesomeIcon icon={faLinkedin} className="text-[#0077B5] mr-2 text-4xl " />
             <a
@@ -68,7 +68,7 @@ const Contact = () => {
             href="https://drive.google.com/file/d/1VrpmElcQM-j5EhylzOUWO7Ua9O-l76IS/view?usp=share_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-green-500 py-3 px-8 rounded-xl text-white font-bold shadow-md transition duration-300 hover:bg-green-600 transform hover:scale-105"
+            className="bg-green-500 py-3 px-2 rounded-xl text-white font-bold shadow-md transition duration-300 hover:bg-green-600 transform hover:scale-105"
           >
             Download My CV
           </a>

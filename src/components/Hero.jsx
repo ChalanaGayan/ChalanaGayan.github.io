@@ -12,35 +12,38 @@ const Hero = () => {
           <div className='w-1 sm:h-80 h-40 violet-gradient' />
         </div>
 
-        <div className="flex flex-row">
+        <div className="flex md:flex-row flex-col-reverse">
           <div>
             <h1 className={`${styles.heroHeadText} text-white`}>
               Hi, I'm <span className='text-[#7147E1]'>Chalana</span>
             </h1>
             <p className={`${styles.heroSubText} mt-2 text-white font-bold`}>
-              <TypeAnimation
-                sequence={[
-                  'Computer Science and Engineering Undergraduate,',
-                  2000,
-                  'AI/ML enthusiast,',
-                  2000,
-                  'Full-stack developer',
-                  2000,
-                ]}
-                wrapper="span"
-                cursor={true}
-                repeat={Infinity}
-                className="inline-block"
-                // Reduce the duration for smoother transitions
-                speed={50}
-              />
+              {window.innerWidth >= 640 ? (
+                <TypeAnimation
+                  sequence={[
+                    'Computer Science and Engineering Undergraduate,',
+                    2000,
+                    'AI/ML enthusiast,',
+                    2000,
+                    'Full-stack developer',
+                    2000,
+                  ]}
+                  wrapper="span"
+                  cursor={true}
+                  repeat={Infinity}
+                  className="inline-block"
+                  speed={50}
+                />
+              ) : (
+                <p className="text-xs">Computer Science and Engineering Undergraduate, AI/ML enthusiast, Full-stack developer</p>
+              )}
             </p>
           </div>
-          <div className="absolute right-14 top-0">
+          <div className="relative md:absolute md:right-14 md:top-0 mt-5 md:mt-0">
             <img
               src="/profile-pic.png"
-              className="w-64"
-              loading="lazy"  // Lazy load the image
+              className="w-10 md:w-64"
+              loading="eager"
               alt="Chalana's profile"
             />
           </div>
