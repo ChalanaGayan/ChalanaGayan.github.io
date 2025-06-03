@@ -1,14 +1,13 @@
 import {
+    content,
+    wso2,
+    aiMl,
     ieee,
     ml,
-
     asp,
     next,
-
     uni,
-
     mobile,
-
     creator,
     web,
     javascript,
@@ -29,6 +28,7 @@ import {
     jobit,
     tripguide,
     threejs,
+    volunteer,
 } from "../assets";
 
 export const navLinks = [
@@ -49,7 +49,7 @@ export const navLinks = [
 const services = [
     {
         title: "AI/ML Enthusiast",
-        icon: mobile,
+        icon: aiMl,
     },
     {
         title: "Frontend Developer",
@@ -61,7 +61,11 @@ const services = [
     },
     {
         title: "Content Creator",
-        icon: creator,
+        icon: content,
+    },
+    {
+        title: "Volunteer",
+        icon: volunteer,
     },
 ];
 
@@ -130,11 +134,25 @@ const technologies = [
 
 const experiences = [
     {
+        title: "WSO2 Certification portal",
+        company_name: "WSO2 LLC",
+        icon: wso2,
+        iconBg: "#FFFFFF",
+        date: "2025",
+        points: [
+            "Worked as a Full Stack Intern gaining hands-on experience across the entire development lifecycle.",
+            "Developed a certification portal using React, Redux, Ballerina, MySQL, and GraphQL.",
+            "Integrated Salesforce for managing user certification data and workflows.",
+            "Designed and implemented APIs with Ballerina to support dynamic frontend interactions.",
+            "Contributed to frontend development with modular UI components and state management using Redux.",
+        ],
+    },
+    {
         title: "Train Booking System (Academic)",
         company_name: "University of Moratuwa",
         icon: uni,  // Reusing existing icon
         iconBg: "#FFFFFF",  // White background
-        date: "2024 - Ongoing",
+        date: "2024",
         points: [
             "Developing a Train Booking System that allows users to search for trains, select seats, and complete bookings through a user-friendly interface.",
             "Utilizing technologies like Node.js, Express, React, and MySQL.",
