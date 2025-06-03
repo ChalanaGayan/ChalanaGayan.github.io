@@ -34,10 +34,17 @@ import ieee from "./company/n-ieee.png";
 import ml from "./company/n-ml.png";
 import train from "./company/n-train.png";
 import uni from "./company/n-uni.png";
-
+import wso2 from "./wso2.png";
+import aiMl from "./company/aiMl.png";
 import asp from "./tech/ASP.png"
 import next from "./tech/next-js.svg"
+import content from "./company/content.png";
+import volunteer from "./company/volunteer.png";
 export {
+  wso2,
+  volunteer,
+  content,
+  aiMl,
   asp, next,
   ieee,
   ml,
