@@ -65,7 +65,7 @@ const Contact = () => {
 
         <div className="mt-8 text-center">
           <a
-            href="https://drive.google.com/file/d/1NGKJYq-gsU-H971agR41xM4YIFG81OSV/view?usp=sharing"
+            href="https://drive.google.com/file/d/1H5ZhnRt0K1pvOdNb7o5GqoouHbxdWoiy/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-green-500 py-3 px-2 rounded-xl text-white font-bold shadow-md transition duration-300 hover:bg-green-600 transform hover:scale-105"
