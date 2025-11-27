@@ -7,6 +7,7 @@ import {
     asp,
     next,
     uni,
+    surecore,
     mobile,
     creator,
     web,
@@ -133,6 +134,70 @@ const technologies = [
 ];
 
 const experiences = [
+    {
+        title: "(Final Year Project- Ongoing) Adaptive AI System for Real-Time Web Attack Detection",
+        company_name: "University of Moratuwa",
+        icon: uni,
+        iconBg: "#FFFFFF",
+        date: "2025 - Ongoing",
+        points: [
+            "Developed an AI system to detect and classify sophisticated web-based attacks (SQLi, XSS, OS Command Injection, SSRF) in real-time.",
+            "Implemented a Continual Learning framework with replay memory buffer and synthetic data generation to prevent catastrophic forgetting.",
+            "Used lightweight transformer models (DistilBERT) optimized with ONNX conversion and INT8 quantization for ultra-low latency in enterprise environments.",
+            "Integrated Explainable AI (XAI) techniques to provide interpretable insights for security analysts.",
+            "Built parallel inference engine with human-in-the-loop validation; ambiguous patterns are routed to an interactive dashboard to refine the model iteratively.",
+            "Achieved a self-evolving, transparent, and computationally efficient security defense system.",
+        ],
+    },
+    {
+        title: "(Ongoing) AI Multi-Agent Platform R&D – Multi-Tenant Automation System",
+        company_name: "Surecore & Minthrm Collaboration",
+        icon: surecore,
+        iconBg: "#FFFFFF",
+        date: "2025 - Ongoing",
+        points: [
+            "Collaborating on Phase 2 of Surely Chatbot integrating multi-agent architecture using LangGraph for automation of tasks, reports, and deliverables.",
+            "Working on multi-tenant system, Keycloak integration, and connecting tools like MCP.",
+            "Researching and developing advanced AI features to enhance automation and task orchestration.",
+        ],
+    },
+    {
+        title: "Surely Personal AI Chatbot",
+        company_name: "Surecore.co",
+        icon: surecore,
+        iconBg: "#FFFFFF",
+        date: "2025",
+        points: [
+            "Developed a RAG-based personal AI chatbot using Python, LangChain, LLMs, TTS, STT, Vector DB (Qdrant), orchestration, and ASR.",
+            "Implemented features to enhance user interaction and retrieval-augmented generation pipelines.",
+        ],
+    },
+    {
+        title: "Serendib Micro Insurance Platform - Cambodia",
+        company_name: "Surecore.co",
+        icon: surecore,
+        iconBg: "#FFFFFF",
+        date: "2025",
+        points: [
+            "Worked as a Full Stack Engineer developing features for the Surecore insurance product including invoices, reports, authentication, and bug fixes.",
+            "Explored the full development lifecycle and microservice architecture using Angular, Spring Boot, Java, and Kubernetes.",
+            "Contributed to backend and frontend development, integrating multiple modules and ensuring smooth deployments.",
+        ],
+    },
+    {
+        title: "WSO2 Certification portal",
+        company_name: "WSO2 LLC",
+        icon: wso2,
+        iconBg: "#FFFFFF",
+        date: "2025",
+        points: [
+            "Worked as a Full Stack Intern gaining hands-on experience across the entire development lifecycle.",
+            "Developed a certification portal using React, Redux, Ballerina, MySQL, and GraphQL.",
+            "Integrated Salesforce for managing user certification data and workflows.",
+            "Designed and implemented APIs with Ballerina to support dynamic frontend interactions.",
+            "Contributed to frontend development with modular UI components and state management using Redux.",
+        ],
+    },
     {
         title: "WSO2 Certification portal",
         company_name: "WSO2 LLC",

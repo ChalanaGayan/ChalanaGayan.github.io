@@ -33,6 +33,7 @@ import tripguide from "./tripguide.png";
 import ieee from "./company/n-ieee.png";
 import ml from "./company/n-ml.png";
 import train from "./company/n-train.png";
+import surecore from "./company/surecore.jpeg";
 import uni from "./company/n-uni.png";
 import wso2 from "./wso2.png";
 import aiMl from "./company/aiMl.png";
@@ -50,6 +51,7 @@ export {
   ml,
   train,
   uni,
+  surecore,
   logo,
   backend,
   creator,
