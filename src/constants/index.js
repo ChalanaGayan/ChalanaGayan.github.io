@@ -199,20 +199,6 @@ const experiences = [
         ],
     },
     {
-        title: "WSO2 Certification portal",
-        company_name: "WSO2 LLC",
-        icon: wso2,
-        iconBg: "#FFFFFF",
-        date: "2025",
-        points: [
-            "Worked as a Full Stack Intern gaining hands-on experience across the entire development lifecycle.",
-            "Developed a certification portal using React, Redux, Ballerina, MySQL, and GraphQL.",
-            "Integrated Salesforce for managing user certification data and workflows.",
-            "Designed and implemented APIs with Ballerina to support dynamic frontend interactions.",
-            "Contributed to frontend development with modular UI components and state management using Redux.",
-        ],
-    },
-    {
         title: "Train Booking System (Academic)",
         company_name: "University of Moratuwa",
         icon: uni,  // Reusing existing icon
