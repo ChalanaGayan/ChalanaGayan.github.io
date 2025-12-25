@@ -1,27 +1,42 @@
 import { BrowserRouter } from "react-router-dom";
+import { useState } from "react";
 
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import {
+  About,
+  Navbar,
+  StarsCanvas,
+  SpiderLoader,
+  HeroRevamped,
+  ProjectsRevamped,
+  JourneyHorizontal,
+  SkillsCategories,
+  Achievements,
+  ContactRevamped,
+} from "./components";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
   return (
     <BrowserRouter>
-      <div className='relative z-0 bg-primary'>
-        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+      {loading ? (
+        <SpiderLoader onComplete={() => setLoading(false)} />
+      ) : (
+        <div className='relative z-0 bg-black'>
           <Navbar />
-          <Hero />
-        </div>
+          <HeroRevamped />
+          <About />
+          <ProjectsRevamped />
+          <JourneyHorizontal />
+          <SkillsCategories />
+          <Achievements />
 
-        <About />
-
-        <Experience />
-        <Tech />
-        {/* <Works />
-        <Feedbacks /> */}
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas />
+          <div className='relative z-0'>
+            <ContactRevamped />
+            <StarsCanvas />
+          </div>
         </div>
-      </div>
+      )}
     </BrowserRouter>
   );
 }

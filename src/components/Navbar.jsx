@@ -18,6 +18,24 @@ const Navbar = () => {
       } else {
         setScrolled(false);
       }
+
+      // Detect active section based on scroll position
+      const sections = ['about', 'work', 'journey', 'skills', 'contact'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 150 && rect.bottom >= 150;
+        }
+        return false;
+      });
+
+      if (current) {
+        const activeNav = navLinks.find(nav => nav.id === current);
+        if (activeNav) {
+          setActive(activeNav.title);
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -51,8 +69,11 @@ const Navbar = () => {
           {navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={`${active === nav.title ? "text-white" : "text-white"
-                } hover:text-blue-400 text-[18px] font-medium cursor-pointer`}
+              className={`${
+                active === nav.title
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-500"
+                  : "text-gray-300"
+              } hover:text-white text-[18px] font-medium cursor-pointer transition-all duration-300 hover:scale-110`}
               onClick={() => setActive(nav.title)}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>

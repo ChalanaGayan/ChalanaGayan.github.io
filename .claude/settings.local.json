@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 10 npm run dev:*)",
+      "Bash(ls:*)",
+      "Bash(for:*)",
+      "Bash(done)",
+      "Bash(while read n f)",
+      "Bash(do mv \"$f\" \"$n.$f##*.\")",
+      "Bash(do echo \"=== $dir ===\" ls /Users/chalanagayan/Desktop/projects/portfolio/ChalanaGayan.github.io/public/journey/$dir/)"
+    ]
+  }
+}
