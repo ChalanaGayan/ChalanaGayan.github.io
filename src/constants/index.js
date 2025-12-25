@@ -247,7 +247,7 @@ const experiences = [
             "Designed and implemented APIs with Ballerina to support dynamic frontend interactions.",
             "Contributed to frontend development with modular UI components and state management using Redux.",
         ],
-        link: "",
+        link: "https://certification.wso2.com",
         teamPhotos: [],
     },
     {
@@ -260,7 +260,7 @@ const experiences = [
             "Developing a Train Booking System that allows users to search for trains, select seats, and complete bookings through a user-friendly interface.",
             "Utilizing technologies like Node.js, Express, React, and MySQL.",
         ],
-        link: "",
+        link: "https://github.com/ChalanaGayan/Train-Booking-System",
         teamPhotos: [],
     },
     {
@@ -286,7 +286,7 @@ const experiences = [
             "Developed an IoT solution leveraging machine learning to detect and identify machine faults based on sound analysis.",
             "Technologies: Python, OpenCV, JavaScript, Flask, Node.js, MQTT.",
         ],
-        link: "",
+        link: "https://github.com/ChalanaGayan/MechaPulse_2024",
         teamPhotos: [],
     },
     {
@@ -325,7 +325,7 @@ const experiences = [
             "Developed a website to showcase details about the IEEE Challenge competition.",
             "Technologies: ReactJS, GitHub Pages.",
         ],
-        link: "",
+        link: "https://ieeesrilankasection.github.io/IEEE-Challenge-Sphere/",
         teamPhotos: [],
     },
     {

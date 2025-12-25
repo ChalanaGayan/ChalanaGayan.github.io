@@ -10,7 +10,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 .hash-span {
@@ -203,22 +203,35 @@
   }
 }
 
-/* Minimal Spider-Man scrollbar */
+/* Windows XP style scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 16px;
+  height: 16px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #ECE9D8;
+  border: 1px solid #ACA899;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #dc2626 0%, #1e1e1e 50%, #2563eb 100%);
-  border-radius: 10px;
+  background: linear-gradient(to right, #DFDDD5 0%, #C1BDB3 50%, #DFDDD5 100%);
+  border: 1px solid #8D8A7E;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ef4444 0%, #2563eb 100%);
+  background: linear-gradient(to right, #D0CEC6 0%, #B0ACA2 50%, #D0CEC6 100%);
+}
+
+::-webkit-scrollbar-button {
+  background: linear-gradient(to bottom, #ECE9D8 0%, #D4CFC4 100%);
+  border: 1px solid #8D8A7E;
+  height: 16px;
+}
+
+::-webkit-scrollbar-button:hover {
+  background: linear-gradient(to bottom, #DDD9CB 0%, #C5C0B5 100%);
 }
 
 /* Radial gradient utility */
