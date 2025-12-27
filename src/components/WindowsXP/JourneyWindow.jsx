@@ -139,10 +139,9 @@ const JourneyWindow = () => {
     <>
       <div className="h-full flex">
         {/* Left Sidebar */}
-        <div className="w-64 border-r-2 border-gray-300 bg-gradient-to-b from-blue-50 to-white overflow-auto">
+        <div className="w-64 border-r-2 border-gray-300 bg-white overflow-auto">
           <div className="p-3 border-b-2 border-gray-300 bg-white sticky top-0 z-10">
-            <h3 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-              <span className="text-lg">🗂️</span>
+            <h3 className="text-sm font-bold text-black">
               Journey Folders
             </h3>
           </div>
@@ -161,12 +160,11 @@ const JourneyWindow = () => {
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
           {/* Toolbar */}
-          <div className="border-b-2 border-gray-300 bg-gradient-to-b from-blue-50 to-white p-2">
+          <div className="border-b-2 border-gray-300 bg-white p-2">
             <div className="flex items-center gap-2">
-              <ToolbarButton onClick={() => setSelectedMilestone(null)}>🏠 Home</ToolbarButton>
+              <ToolbarButton onClick={() => setSelectedMilestone(null)}>Home</ToolbarButton>
               <div className="flex-1 flex items-center gap-2 bg-white border-2 border-gray-400 px-3 py-1 rounded">
-                <span className="text-sm">📂</span>
-                <span className="text-xs text-gray-800">
+                <span className="text-xs text-black">
                   My Journey {selectedMilestone && `> ${selectedMilestone.title}`}
                 </span>
               </div>
@@ -183,7 +181,7 @@ const JourneyWindow = () => {
           </div>
 
           {/* Status Bar */}
-          <div className="border-t-2 border-gray-300 bg-gradient-to-b from-gray-100 to-white px-3 py-1.5">
+          <div className="border-t-2 border-gray-300 bg-white px-3 py-1.5">
             <span className="text-xs text-gray-700">
               {selectedMilestone
                 ? `${selectedMilestone.images.length} photos | ${selectedMilestone.highlights.length} highlights`
@@ -201,12 +199,16 @@ const FolderItem = ({ milestone, onClick, active }) => {
     <button
       onClick={onClick}
       className={`w-full flex items-start gap-2 px-2 py-2 rounded cursor-pointer text-left transition-all ${
-        active ? 'bg-blue-100 border-2 border-blue-400 shadow-sm' : 'border-2 border-transparent hover:bg-blue-50 hover:border-blue-200'
+        active ? 'bg-gray-100 border-2 border-gray-400 shadow-sm' : 'border-2 border-transparent hover:bg-gray-50 hover:border-gray-300'
       }`}
     >
-      <span className="text-2xl mt-0.5">📁</span>
+      <img
+        src="/desktop_pc/folder_windowsXP.png"
+        alt="folder"
+        className="w-6 h-6 flex-shrink-0 mt-0.5"
+      />
       <div className="flex-1 min-w-0">
-        <div className="text-xs font-semibold text-gray-800 leading-tight">{milestone.title}</div>
+        <div className="text-xs font-semibold text-black leading-tight">{milestone.title}</div>
         <div className="text-xs text-gray-600 mt-0.5">{milestone.year}</div>
         <div className="text-xs text-gray-500 mt-0.5">{milestone.images.length} photos</div>
       </div>
@@ -218,7 +220,7 @@ const ToolbarButton = ({ children, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="px-3 py-1.5 text-xs text-gray-700 hover:bg-blue-100 rounded border border-gray-300 hover:border-blue-400 transition-colors font-medium"
+      className="px-3 py-1.5 text-xs text-gray-700 hover:bg-gray-100 rounded border border-gray-300 hover:border-gray-400 transition-colors font-medium"
     >
       {children}
     </button>
@@ -229,14 +231,13 @@ const OverviewPage = ({ milestones, onSelect }) => {
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-          <span className="text-3xl">🛤️</span>
+        <h2 className="text-2xl font-bold text-black mb-2">
           My Professional & Academic Journey
         </h2>
         <p className="text-gray-600">
           Explore the milestones, experiences, and achievements that shaped my career in software engineering and AI/ML.
         </p>
-        <div className="h-1 w-32 bg-gradient-to-r from-blue-600 to-blue-400 mt-3"></div>
+        <div className="h-1 w-32 bg-gray-800 mt-3"></div>
       </div>
 
       <div className="space-y-4">
@@ -244,24 +245,23 @@ const OverviewPage = ({ milestones, onSelect }) => {
           <div
             key={index}
             onClick={() => onSelect(milestone)}
-            className="border-2 border-gray-200 rounded-lg p-4 hover:border-blue-400 hover:shadow-lg transition-all cursor-pointer bg-gradient-to-r from-white to-blue-50"
+            className="border-2 border-gray-300 rounded p-4 hover:border-gray-500 hover:shadow-lg transition-all cursor-pointer bg-white"
           >
             <div className="flex items-start gap-4">
-              <span className="text-4xl">📁</span>
               <div className="flex-1">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <h3 className="text-lg font-bold text-gray-800">{milestone.title}</h3>
-                    <p className="text-sm text-blue-600 font-semibold">{milestone.role}</p>
+                    <h3 className="text-lg font-bold text-black">{milestone.title}</h3>
+                    <p className="text-sm text-gray-700 font-semibold">{milestone.role}</p>
                   </div>
                   <span className="text-xs text-gray-500 whitespace-nowrap ml-4">{milestone.year}</span>
                 </div>
-                <p className="text-sm text-gray-700 mb-3">{milestone.description}</p>
+                <p className="text-sm text-gray-600 mb-3">{milestone.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {milestone.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded border border-blue-300 font-medium"
+                      className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded border border-gray-300 font-medium"
                     >
                       {tag}
                     </span>
@@ -280,12 +280,11 @@ const MilestoneDetail = ({ milestone }) => {
   return (
     <div>
       {/* Header */}
-      <div className="mb-6 pb-4 border-b-2 border-blue-200">
+      <div className="mb-6 pb-4 border-b-2 border-gray-300">
         <div className="flex items-start gap-3 mb-3">
-          <span className="text-5xl">📁</span>
           <div className="flex-1">
-            <h2 className="text-2xl font-bold text-gray-800 mb-1">{milestone.title}</h2>
-            <p className="text-base font-semibold text-blue-600 mb-1">{milestone.role}</p>
+            <h2 className="text-2xl font-bold text-black mb-1">{milestone.title}</h2>
+            <p className="text-base font-semibold text-gray-700 mb-1">{milestone.role}</p>
             <p className="text-sm text-gray-600">{milestone.year}</p>
           </div>
         </div>
@@ -294,7 +293,7 @@ const MilestoneDetail = ({ milestone }) => {
           {milestone.tags.map((tag, i) => (
             <span
               key={i}
-              className="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full border border-blue-300 font-semibold"
+              className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded border border-gray-300 font-semibold"
             >
               {tag}
             </span>
@@ -304,14 +303,13 @@ const MilestoneDetail = ({ milestone }) => {
 
       {/* Highlights */}
       <div className="mb-6">
-        <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-          <span className="text-xl">✨</span>
+        <h3 className="text-lg font-bold text-black mb-3">
           Key Highlights
         </h3>
         <div className="grid gap-2">
           {milestone.highlights.map((highlight, idx) => (
             <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-blue-600 font-bold text-lg mt-0.5">•</span>
+              <span className="text-gray-700 font-bold text-lg mt-0.5">•</span>
               <p className="text-sm text-gray-700 flex-1 leading-relaxed">{highlight}</p>
             </div>
           ))}
@@ -321,18 +319,17 @@ const MilestoneDetail = ({ milestone }) => {
       {/* Projects */}
       {milestone.projects && milestone.projects.length > 0 && (
         <div className="mb-6">
-          <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <span className="text-xl">🚀</span>
+          <h3 className="text-lg font-bold text-black mb-3">
             Projects & Contributions
           </h3>
           <div className="space-y-3">
             {milestone.projects.map((project, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-lg p-4">
+              <div key={idx} className="bg-white border-2 border-gray-300 rounded p-4">
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-bold text-gray-800 text-sm">{project.name}</h4>
+                  <h4 className="font-bold text-black text-sm">{project.name}</h4>
                   <span className="text-xs text-gray-500 whitespace-nowrap ml-4">{project.period}</span>
                 </div>
-                <p className="text-xs text-blue-600 font-semibold mb-2">{project.tech}</p>
+                <p className="text-xs text-gray-700 font-semibold mb-2">{project.tech}</p>
                 <p className="text-sm text-gray-700 leading-relaxed">{project.description}</p>
               </div>
             ))}

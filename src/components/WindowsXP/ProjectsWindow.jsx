@@ -33,11 +33,11 @@ const ProjectsWindow = () => {
   return (
     <div className="h-full flex">
       {/* Left Sidebar - Folder Navigation */}
-      <div className="w-48 border-r border-gray-300 bg-gradient-to-b from-blue-50 to-white">
+      <div className="w-48 border-r border-gray-300 bg-white">
         <div className="p-3">
           <div className="mb-4">
-            <h3 className="text-xs font-bold text-gray-700 mb-2">Folders</h3>
-            <FolderItem icon="📁" label="My Projects" active />
+            <h3 className="text-xs font-bold text-black mb-2">Folders</h3>
+            <FolderItem label="My Projects" active />
           </div>
         </div>
       </div>
@@ -45,15 +45,14 @@ const ProjectsWindow = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col">
         {/* Toolbar */}
-        <div className="border-b border-gray-300 bg-gradient-to-b from-blue-50 to-white p-2">
+        <div className="border-b border-gray-300 bg-white p-2">
           <div className="flex items-center gap-2">
-            <ToolbarButton onClick={goBack} disabled={historyIndex <= 0}>⬅️ Back</ToolbarButton>
-            <ToolbarButton onClick={goForward} disabled={historyIndex >= history.length - 1}>➡️ Forward</ToolbarButton>
+            <ToolbarButton onClick={goBack} disabled={historyIndex <= 0}>Back</ToolbarButton>
+            <ToolbarButton onClick={goForward} disabled={historyIndex >= history.length - 1}>Forward</ToolbarButton>
             <div className="w-px h-6 bg-gray-300 mx-1"></div>
-            <ToolbarButton onClick={() => navigateToProject(null)}>📁 Folders</ToolbarButton>
+            <ToolbarButton onClick={() => navigateToProject(null)}>Folders</ToolbarButton>
             <div className="flex-1 flex items-center gap-2 bg-white border border-gray-400 px-2 py-1 rounded">
-              <span className="text-xs text-gray-600">📂</span>
-              <span className="text-xs text-gray-800">My Computer &gt; Projects</span>
+              <span className="text-xs text-black">My Computer &gt; Projects</span>
             </div>
           </div>
         </div>
@@ -79,7 +78,7 @@ const ProjectsWindow = () => {
         </div>
 
         {/* Status Bar */}
-        <div className="border-t border-gray-300 bg-gradient-to-b from-gray-100 to-white px-3 py-1">
+        <div className="border-t border-gray-300 bg-white px-3 py-1">
           <span className="text-xs text-gray-700">
             {selectedProject ? '1 item' : `${experiences.length} items`}
           </span>
@@ -89,15 +88,14 @@ const ProjectsWindow = () => {
   );
 };
 
-const FolderItem = ({ icon, label, active }) => {
+const FolderItem = ({ label, active }) => {
   return (
     <div
       className={`flex items-center gap-2 px-2 py-1 rounded cursor-pointer ${
-        active ? 'bg-blue-100 border border-blue-300' : 'hover:bg-blue-50'
+        active ? 'bg-blue-100 border border-blue-600' : 'hover:bg-blue-50'
       }`}
     >
-      <span className="text-lg">{icon}</span>
-      <span className="text-xs text-gray-800">{label}</span>
+      <span className="text-xs text-black">{label}</span>
     </div>
   );
 };
@@ -118,7 +116,7 @@ const ProjectRow = ({ project, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="flex items-center gap-3 p-2 hover:bg-blue-50 cursor-pointer border border-transparent hover:border-blue-200 rounded"
+      className="flex items-center gap-3 p-2 hover:bg-blue-50 cursor-pointer border border-transparent hover:border-blue-300 rounded"
     >
       <img
         src={project.icon}
@@ -126,14 +124,14 @@ const ProjectRow = ({ project, onClick }) => {
         className="w-8 h-8 object-contain"
       />
       <div className="flex-1 min-w-0">
-        <div className="text-sm text-gray-800 truncate font-semibold">
+        <div className="text-sm text-black truncate font-semibold">
           {project.title}
         </div>
         <div className="text-xs text-gray-600">
           {project.company_name} • {project.date}
         </div>
       </div>
-      <div className="text-xs text-gray-500">📄 Project</div>
+      <div className="text-xs text-gray-500">Project</div>
     </div>
   );
 };
@@ -159,21 +157,21 @@ const ProjectDetails = ({ project, onBack }) => {
     <div className="max-w-3xl">
       <button
         onClick={onBack}
-        className="mb-4 px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+        className="mb-4 px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
       >
-        ⬅️ Back to Projects
+        Back to Projects
       </button>
 
-      <div className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-lg p-6">
+      <div className="bg-white border-2 border-gray-300 rounded p-6">
         {/* Header */}
-        <div className="flex items-start gap-4 mb-6 pb-6 border-b-2 border-blue-200">
+        <div className="flex items-start gap-4 mb-6 pb-6 border-b-2 border-gray-300">
           <img
             src={project.icon}
             alt={project.company_name}
-            className="w-16 h-16 object-contain border-2 border-blue-300 rounded-lg p-2 bg-white"
+            className="w-16 h-16 object-contain border-2 border-gray-300 rounded p-2 bg-white"
           />
           <div className="flex-1">
-            <h2 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h2>
+            <h2 className="text-xl font-bold text-black mb-2">{project.title}</h2>
             <div className="flex items-center gap-3 text-sm text-gray-700">
               <span className="font-semibold">{project.company_name}</span>
               <span>•</span>
@@ -185,12 +183,12 @@ const ProjectDetails = ({ project, onBack }) => {
         {/* Technologies */}
         {technologies.length > 0 && (
           <div className="mb-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-3">Technologies</h3>
+            <h3 className="text-lg font-bold text-black mb-3">Technologies</h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech, index) => (
-                <span 
-                  key={index} 
-                  className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium border border-blue-300"
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-blue-100 text-blue-700 rounded text-sm font-medium border border-blue-300"
                 >
                   {tech}
                 </span>
@@ -201,7 +199,7 @@ const ProjectDetails = ({ project, onBack }) => {
 
         {/* Details */}
         <div className="mb-6">
-          <h3 className="text-lg font-bold text-gray-800 mb-3">Project Details</h3>
+          <h3 className="text-lg font-bold text-black mb-3">Project Details</h3>
           <ul className="space-y-2">
             {project.points.map((point, index) => (
               <li key={index} className="flex gap-2 text-sm text-gray-700">
@@ -214,22 +212,22 @@ const ProjectDetails = ({ project, onBack }) => {
 
         {/* Link */}
         {project.link && (
-          <div className="pt-4 border-t border-blue-200">
+          <div className="pt-4 border-t border-gray-300">
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors text-sm font-semibold"
             >
-              🔗 View Project
+              View Project
             </a>
           </div>
         )}
 
         {/* Team Photos Placeholder */}
         {project.teamPhotos && project.teamPhotos.length > 0 && (
-          <div className="mt-6 pt-6 border-t border-blue-200">
-            <h3 className="text-lg font-bold text-gray-800 mb-3">Team Photos</h3>
+          <div className="mt-6 pt-6 border-t border-gray-300">
+            <h3 className="text-lg font-bold text-black mb-3">Team Photos</h3>
             <div className="grid grid-cols-3 gap-2">
               {project.teamPhotos.map((photo, index) => (
                 <img

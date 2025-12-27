@@ -98,6 +98,9 @@ const Desktop = () => {
     } else if (windowData?.id === 'game') {
       defaultWidth = 600;
       defaultHeight = 700;
+    } else if (windowData?.id === 'journey') {
+      defaultWidth = 1500;
+      defaultHeight = 900;
     }
 
     const centeredX = Math.max(50, (screenWidth - defaultWidth) / 2);
@@ -214,6 +217,9 @@ const Desktop = () => {
         } else if (window.id === 'game') {
           defaultWidth = 600;
           defaultHeight = 700;
+        } else if (window.id === 'journey') {
+          defaultWidth = 1500;
+          defaultHeight = 900;
         }
 
         return (

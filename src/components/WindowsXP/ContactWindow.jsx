@@ -10,17 +10,15 @@ const ContactWindow = () => {
   return (
     <div className="h-full flex flex-col bg-white">
       {/* Tab Navigation */}
-      <div className="bg-gradient-to-b from-blue-100 to-white border-b-2 border-gray-300">
+      <div className="bg-white border-b-2 border-gray-300">
         <div className="flex">
           <TabButton
             label="Contact Info"
-            icon="📧"
             active={activeTab === 'contact'}
             onClick={() => setActiveTab('contact')}
           />
           <TabButton
             label="Resume / CV"
-            icon="📄"
             active={activeTab === 'cv'}
             onClick={() => setActiveTab('cv')}
           />
@@ -31,17 +29,16 @@ const ContactWindow = () => {
       {activeTab === 'cv' && (
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* CV Viewer Header */}
-          <div className="bg-gradient-to-r from-green-500 to-teal-500 p-4 flex items-center justify-between">
-            <div className="text-white">
-              <h3 className="text-lg font-bold">My Resume / CV</h3>
-              <p className="text-sm text-white/90">View or download my complete curriculum vitae</p>
+          <div className="bg-gray-100 p-4 flex items-center justify-between border-b-2 border-gray-300">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900">My Resume / CV</h3>
+              <p className="text-sm text-gray-600">View or download my complete curriculum vitae</p>
             </div>
             <a
               href={cvDownloadUrl}
               download="Chalana_Gayan_CV.pdf"
-              className="px-6 py-3 bg-white text-green-600 font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-2"
+              className="px-6 py-3 bg-gray-800 text-white font-bold rounded hover:bg-gray-700 transition-colors shadow"
             >
-              <span className="text-xl">📥</span>
               Download CV
             </a>
           </div>
@@ -59,18 +56,17 @@ const ContactWindow = () => {
       )}
 
       {activeTab === 'contact' && (
-        <div className="flex-1 overflow-auto bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="flex-1 overflow-auto bg-gray-50">
           {/* Header Banner */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-            <h2 className="text-2xl font-bold mb-2">Let's Connect!</h2>
-            <p className="text-white/90">Get in touch through any of these channels</p>
+          <div className="bg-gray-100 p-6 border-b-2 border-gray-300">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Let's Connect!</h2>
+            <p className="text-gray-600">Get in touch through any of these channels</p>
           </div>
 
           <div className="p-6">
             {/* Primary Contact - Email */}
-            <div className="mb-6 p-6 bg-white rounded-xl border-2 border-blue-300 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <span className="text-3xl">📧</span>
+            <div className="mb-6 p-6 bg-white rounded border-2 border-gray-300 shadow">
+              <h3 className="text-xl font-bold text-black mb-4">
                 Primary Email
               </h3>
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -83,9 +79,8 @@ const ContactWindow = () => {
                     navigator.clipboard.writeText('chalana.dev@gmail.com');
                     alert('Email copied to clipboard!');
                   }}
-                  className="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                  className="px-6 py-3 rounded bg-gray-800 hover:bg-gray-700 text-white font-semibold transition-all shadow"
                 >
-                  <span>📋</span>
                   Copy Email
                 </button>
               </div>
@@ -93,37 +88,28 @@ const ContactWindow = () => {
 
             {/* Social Media */}
             <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <span className="text-2xl">🌐</span>
+              <h3 className="text-xl font-bold text-black mb-4">
                 Connect on Social Media
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <SocialLink
                   title="LinkedIn"
-                  icon="💼"
                   url="https://www.linkedin.com/in/chalana-gayan-b6b60212a/"
-                  color="from-blue-600 to-blue-700"
                   description="Professional network"
                 />
                 <SocialLink
                   title="GitHub"
-                  icon="💻"
                   url="https://github.com/ChalanaGayan"
-                  color="from-gray-700 to-gray-900"
                   description="Code repositories"
                 />
                 <SocialLink
                   title="WhatsApp"
-                  icon="💬"
                   url="https://wa.me/message/DR6JXIW5EVGLJ1"
-                  color="from-green-500 to-green-600"
                   description="Quick messaging"
                 />
                 <SocialLink
                   title="Instagram"
-                  icon="📸"
                   url="https://www.instagram.com/chanzz_11/"
-                  color="from-pink-500 to-purple-600"
                   description="Personal updates"
                 />
               </div>
@@ -135,39 +121,35 @@ const ContactWindow = () => {
   );
 };
 
-const TabButton = ({ label, icon, active, onClick }) => {
+const TabButton = ({ label, active, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`flex-1 px-4 py-3 font-semibold text-sm flex items-center justify-center gap-2 transition-all ${
+      className={`flex-1 px-4 py-3 font-semibold text-sm transition-all ${
         active
-          ? 'bg-gradient-to-b from-white to-blue-50 text-blue-600 border-b-2 border-blue-600'
+          ? 'bg-white text-gray-800 border-b-2 border-gray-800'
           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
       }`}
     >
-      <span className="text-lg">{icon}</span>
       {label}
     </button>
   );
 };
 
-const SocialLink = ({ title, icon, url, color, description }) => {
+const SocialLink = ({ title, url, description }) => {
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-5 bg-white border-2 border-gray-300 rounded-lg hover:border-blue-500 hover:shadow-xl transition-all group"
+      className="p-5 bg-white border-2 border-gray-300 rounded hover:border-gray-500 hover:shadow-lg transition-all group"
     >
       <div className="flex items-center gap-4">
-        <div className={`bg-gradient-to-br ${color} text-white text-3xl w-14 h-14 flex items-center justify-center rounded-lg shadow-lg`}>
-          {icon}
-        </div>
         <div className="flex-1">
-          <h4 className="font-bold text-gray-800 group-hover:text-blue-600 text-base">{title}</h4>
+          <h4 className="font-bold text-gray-900 group-hover:text-gray-700 text-base">{title}</h4>
           <p className="text-xs text-gray-500 mt-1">{description}</p>
         </div>
-        <span className="text-gray-400 group-hover:text-blue-600 transition-colors">→</span>
+        <span className="text-gray-400 group-hover:text-gray-700 transition-colors">→</span>
       </div>
     </a>
   );
