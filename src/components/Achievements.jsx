@@ -8,17 +8,17 @@ const Achievements = () => {
 
   const achievements = [
     {
-      image: '/journey/achievements/1.jpg',
+      image: '/journey/achievements/1.webp',
       title: 'Achievement 1',
       year: '2024',
     },
     {
-      image: '/journey/achievements/2.jpg',
+      image: '/journey/achievements/2.webp',
       title: 'Achievement 2',
       year: '2023',
     },
     {
-      image: '/journey/achievements/3.jpg',
+      image: '/journey/achievements/3.webp',
       title: 'Achievement 3',
       year: '2022',
     },

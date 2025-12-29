@@ -5,7 +5,7 @@ const JourneyWindow = () => {
   const [selectedMilestone, setSelectedMilestone] = useState(null);
 
   const getImages = (folder, count) => {
-    return Array.from({ length: count }, (_, i) => `/journey/${folder}/${i + 1}.jpg`);
+    return Array.from({ length: count }, (_, i) => `/journey/${folder}/${i + 1}.webp`);
   };
 
   const milestones = [
@@ -65,7 +65,7 @@ const JourneyWindow = () => {
       title: 'University of Moratuwa',
       role: 'BSc Eng (Hons) - Computer Science & Engineering',
       description: 'Pursuing Computer Science and Engineering degree with CGPA 3.56. Specializing in AI/ML and Software Engineering. Active in IEEE, hackathons, and technical communities. Department Representative (2023-2024).',
-      images: getImages('University', 11),
+      images: getImages('University', 13),
       tags: ['AI/ML', 'Software Engineering', 'Research', 'Leadership'],
       highlights: [
         'CGPA: 3.56 (Up to 6 Semesters)',
@@ -107,7 +107,7 @@ const JourneyWindow = () => {
       title: 'R/ Sivali Central College',
       role: 'GCE A/L - Physical Science | Senior Prefect',
       description: 'Excelled in GCE Advanced Level with Island Rank 183 and District Rank 5. Z-score: 2.4768. Served as Senior Prefect (2017-2020) leading student council and organizing school events.',
-      images: getImages('school', 10),
+      images: getImages('school', 6),
       tags: ['Academic Excellence', 'Leadership', 'Community Service'],
       highlights: [
         'Z-score: 2.4768',
@@ -123,7 +123,7 @@ const JourneyWindow = () => {
       title: 'Sasnaka Sansada - Volunteering',
       role: 'Deputy Pillar Head - Membership Development',
       description: 'Leading membership development initiatives and contributing to community service and social responsibility programs. Committed to making a positive impact through volunteering activities.',
-      images: getImages('Sasnaka', 12),
+      images: getImages('Sasnaka', 11),
       tags: ['Leadership', 'Community Service', 'Social Impact', 'Volunteering'],
       highlights: [
         'Deputy Pillar Head - Membership Development Pillar',

@@ -135,21 +135,21 @@ const Achievements = () => {
       date: 'April 2024',
       organization: 'IEEE WIE Student Branch - KDU & AION Campus',
       description: 'Placed 1st runner-up among 20 teams in a supervised hackathon where AI tools were prohibited. Selected for finals after completing data science tasks.',
-      image: '/journey/achievements/1.jpg'
+      image: '/journey/achievements/1.webp'
     },
     {
       title: 'Top 5 Winners - Mini Hackathon',
       date: 'May 2024',
       organization: 'Mathematics Society - University of Moratuwa',
       description: 'Recognized as one of the top 5 winners out of 1000+ participants in a mathematics-focused hackathon.',
-      image: '/journey/achievements/2.jpg'
+      image: '/journey/achievements/2.webp'
     },
     {
       title: 'IEEE Extreme - Global Hackathon',
       date: 'October 2023',
       organization: 'IEEE',
       description: 'Achieved Top 100 ranking in Sri Lanka and Top 2500 globally in this prestigious 24-hour programming competition.',
-      image: '/journey/achievements/3.jpg'
+      image: '/journey/achievements/3.webp'
     },
     {
       title: 'Semi-Finalists - SLIOT Challenge',

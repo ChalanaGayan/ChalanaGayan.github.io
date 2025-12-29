@@ -190,10 +190,10 @@ const StoryText = () => {
     >
       <h3 className="text-3xl font-bold text-center max-w-3xl mx-auto">
         <span style={{
-          background: `linear-gradient(to right, #eab308 ${fillProgress}%, #374151 ${fillProgress}%)`,
+          backgroundImage: `linear-gradient(to right, #eab308 ${fillProgress}%, #374151 ${fillProgress}%)`,
+          backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
         }}>
           I first fell in love with computers with Windows XP
         </span>

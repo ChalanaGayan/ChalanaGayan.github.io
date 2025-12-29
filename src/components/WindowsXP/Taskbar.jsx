@@ -59,7 +59,7 @@ const Taskbar = ({ windows, onWindowClick }) => {
         }}
       >
         <img
-          src="/desktop_pc/startmenu_windowsXP.png"
+          src="/desktop_pc/startmenu_windowsXP.png" 
           alt="Start"
           className="w-5 h-5 object-contain"
         />
