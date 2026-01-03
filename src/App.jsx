@@ -1,27 +1,21 @@
 import { BrowserRouter } from "react-router-dom";
-
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { useState } from "react";
+import Desktop from "./components/WindowsXP/Desktop";
+import MobileAndroidLayout from "./components/Mobile/MobileAndroidLayout";
+import useIsMobile from "./hooks/useIsMobile";
+import { MobileProvider } from "./context/MobileContext";
+import { WindowNavigationProvider } from "./context/WindowNavigationContext";
 
 const App = () => {
+  const isMobile = useIsMobile(768); // Switch to mobile layout below 768px
+
   return (
     <BrowserRouter>
-      <div className='relative z-0 bg-primary'>
-        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-          <Navbar />
-          <Hero />
-        </div>
-
-        <About />
-
-        <Experience />
-        <Tech />
-        {/* <Works />
-        <Feedbacks /> */}
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas />
-        </div>
-      </div>
+      <MobileProvider isMobile={isMobile}>
+        <WindowNavigationProvider>
+          {isMobile ? <MobileAndroidLayout /> : <Desktop />}
+        </WindowNavigationProvider>
+      </MobileProvider>
     </BrowserRouter>
   );
 }

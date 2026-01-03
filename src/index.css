@@ -10,7 +10,19 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
+}
+
+/* Hide scrollbar on mobile devices */
+@media (max-width: 768px) {
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }
 
 .hash-span {
@@ -201,4 +213,100 @@
       -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
+}
+
+/* Windows XP style scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ECE9D8;
+  border: 1px solid #ACA899;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #DFDDD5 0%, #C1BDB3 50%, #DFDDD5 100%);
+  border: 1px solid #8D8A7E;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #D0CEC6 0%, #B0ACA2 50%, #D0CEC6 100%);
+}
+
+::-webkit-scrollbar-button {
+  background: linear-gradient(to bottom, #ECE9D8 0%, #D4CFC4 100%);
+  border: 1px solid #8D8A7E;
+  height: 16px;
+}
+
+::-webkit-scrollbar-button:hover {
+  background: linear-gradient(to bottom, #DDD9CB 0%, #C5C0B5 100%);
+}
+
+/* Radial gradient utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Spider-Man Glitch Effects */
+@keyframes subtle-glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, 1px);
+  }
+  20% {
+    transform: translate(2px, -1px);
+  }
+  30% {
+    transform: translate(-1px, 2px);
+  }
+  40% {
+    transform: translate(1px, -2px);
+  }
+  50% {
+    transform: translate(0);
+  }
+}
+
+.glitch-element {
+  animation: subtle-glitch 8s infinite;
+}
+
+/* Text glitch effect */
+@keyframes text-glitch {
+  0%, 100% {
+    text-shadow: 0 0 0 rgba(220, 38, 38, 0);
+  }
+  25% {
+    text-shadow: 2px 2px 2px rgba(220, 38, 38, 0.3), -2px -2px 2px rgba(37, 99, 235, 0.3);
+  }
+  50% {
+    text-shadow: -2px 2px 2px rgba(220, 38, 38, 0.3), 2px -2px 2px rgba(37, 99, 235, 0.3);
+  }
+  75% {
+    text-shadow: 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.text-glitch {
+  animation: text-glitch 10s infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(220, 38, 38, 0.3), 0 0 10px rgba(37, 99, 235, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.6), 0 0 30px rgba(37, 99, 235, 0.4);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }

@@ -42,6 +42,14 @@ export const navLinks = [
         title: "Projects",
     },
     {
+        id: "journey",
+        title: "Journey",
+    },
+    {
+        id: "skills",
+        title: "Skills",
+    },
+    {
         id: "contact",
         title: "Contact",
     },
@@ -133,6 +141,40 @@ const technologies = [
     },
 ];
 
+// Skill categories for new Skills section
+export const skillCategories = {
+    fullStack: {
+        title: "Full Stack Engineer",
+        technologies: [
+            { name: "HTML 5", icon: html },
+            { name: "CSS 3", icon: css },
+            { name: "JavaScript", icon: javascript },
+            { name: "TypeScript", icon: typescript },
+            { name: "React JS", icon: reactjs },
+            { name: "Tailwind CSS", icon: tailwind },
+            { name: "Next JS", icon: next },
+            { name: "Node JS", icon: nodejs },
+            { name: "ASP.NET Core", icon: asp },
+            { name: "MongoDB", icon: mongodb },
+            { name: "Git", icon: git },
+            { name: "Docker", icon: docker },
+            { name: "Figma", icon: figma },
+            { name: "Three JS", icon: threejs },
+        ]
+    },
+    aiMl: {
+        title: "AI & Machine Learning",
+        technologies: [
+            { name: "Python", icon: javascript }, // Placeholder
+            { name: "TensorFlow", icon: javascript }, // Placeholder
+            { name: "LangChain", icon: javascript }, // Placeholder
+            { name: "Machine Learning", icon: aiMl },
+            { name: "Deep Learning", icon: aiMl },
+            { name: "NLP", icon: aiMl },
+        ]
+    }
+};
+
 const experiences = [
     {
         title: "(Final Year Project- Ongoing) Adaptive AI System for Real-Time Web Attack Detection",
@@ -148,6 +190,8 @@ const experiences = [
             "Built parallel inference engine with human-in-the-loop validation; ambiguous patterns are routed to an interactive dashboard to refine the model iteratively.",
             "Achieved a self-evolving, transparent, and computationally efficient security defense system.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "(Ongoing) AI Multi-Agent Platform R&D – Multi-Tenant Automation System",
@@ -160,6 +204,8 @@ const experiences = [
             "Working on multi-tenant system, Keycloak integration, and connecting tools like MCP.",
             "Researching and developing advanced AI features to enhance automation and task orchestration.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "Surely Personal AI Chatbot",
@@ -171,6 +217,8 @@ const experiences = [
             "Developed a RAG-based personal AI chatbot using Python, LangChain, LLMs, TTS, STT, Vector DB (Qdrant), orchestration, and ASR.",
             "Implemented features to enhance user interaction and retrieval-augmented generation pipelines.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "Serendib Micro Insurance Platform - Cambodia",
@@ -183,6 +231,8 @@ const experiences = [
             "Explored the full development lifecycle and microservice architecture using Angular, Spring Boot, Java, and Kubernetes.",
             "Contributed to backend and frontend development, integrating multiple modules and ensuring smooth deployments.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "WSO2 Certification portal",
@@ -197,6 +247,8 @@ const experiences = [
             "Designed and implemented APIs with Ballerina to support dynamic frontend interactions.",
             "Contributed to frontend development with modular UI components and state management using Redux.",
         ],
+        link: "https://certification.wso2.com",
+        teamPhotos: [],
     },
     {
         title: "Train Booking System (Academic)",
@@ -208,6 +260,8 @@ const experiences = [
             "Developing a Train Booking System that allows users to search for trains, select seats, and complete bookings through a user-friendly interface.",
             "Utilizing technologies like Node.js, Express, React, and MySQL.",
         ],
+        link: "https://github.com/ChalanaGayan/TrainBooking",
+        teamPhotos: [],
     },
     {
         title: "Banking System - DBMS (Academic)",
@@ -219,6 +273,8 @@ const experiences = [
             "Created a Database Management System for a banking system, featuring transaction handling, user lanes, and a user-friendly interface.",
             "Built with HTML/CSS/JavaScript, MySQL, and React Native.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "MechaPulse (Competition)",
@@ -230,6 +286,8 @@ const experiences = [
             "Developed an IoT solution leveraging machine learning to detect and identify machine faults based on sound analysis.",
             "Technologies: Python, OpenCV, JavaScript, Flask, Node.js, MQTT.",
         ],
+        link: "https://github.com/ChalanaGayan/MechaPulse",
+        teamPhotos: [],
     },
     {
         title: "Taprobanz - Ecommerce Platform",
@@ -241,6 +299,8 @@ const experiences = [
             "Designing and developing an e-commerce website using WooCommerce and WordPress, tailored to meet the client's business needs.",
             "Technologies: WordPress, WooCommerce, PHP.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "Library Management System - Basic CRUD/Auth",
@@ -252,6 +312,8 @@ const experiences = [
             "Built a web application for managing library resources with CRUD operations and user authentication.",
             "Technologies: ASP.NET Core Web API, React (TypeScript), Tailwind CSS, Ant Design.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "IEEE Challenge Sphere - Website",
@@ -263,6 +325,8 @@ const experiences = [
             "Developed a website to showcase details about the IEEE Challenge competition.",
             "Technologies: ReactJS, GitHub Pages.",
         ],
+        link: "https://ieeesrilankasection.github.io/IEEE-Challenge-Sphere/",
+        teamPhotos: [],
     },
     {
         title: "4-bit Micro Processor (Academic)",
@@ -274,6 +338,8 @@ const experiences = [
             "Developed a simple processor capable of executing basic instructions using the BASYS2 micro-controller.",
             "Technologies: Xilinx ISE.",
         ],
+        link: "",
+        teamPhotos: [],
     },
     {
         title: "RPAL Language Compiler (Academic)",
@@ -285,6 +351,8 @@ const experiences = [
             "Developed a C++ compiler for RPAL to parse, generate AST, compile, and execute RPAL code.",
             "Technologies: C++, Compiler Design Techniques.",
         ],
+        link: "",
+        teamPhotos: [],
     },
 ];
 
