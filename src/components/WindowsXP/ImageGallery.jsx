@@ -93,6 +93,7 @@ const ImageGallery = ({ images, title = "Gallery" }) => {
             src={validImages[currentIndex]}
             alt={`${title} ${currentIndex + 1}`}
             className="max-w-full max-h-full object-contain"
+            loading="lazy"
           />
         </div>
 
@@ -147,6 +148,7 @@ const ImageGallery = ({ images, title = "Gallery" }) => {
                 src={img}
                 alt={`Thumbnail ${index + 1}`}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </button>
           ))}
