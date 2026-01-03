@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useIsMobileContext } from '../../context/MobileContext';
 
 const ImageGallery = ({ images, title = "Gallery" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [validImages, setValidImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const isMobile = useIsMobileContext();
+
+  // Add CSS to hide scrollbar on mobile
+  const thumbnailScrollStyle = isMobile ? {
+    scrollbarWidth: 'none',
+    msOverflowStyle: 'none',
+    WebkitOverflowScrolling: 'touch'
+  } : {};
 
   useEffect(() => {
     // Filter out images that don't exist
@@ -67,14 +76,19 @@ const ImageGallery = ({ images, title = "Gallery" }) => {
 
   return (
     <div className="w-full">
-      <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-        <span className="text-xl">📸</span>
+      {isMobile && (
+        <style>
+          {`.image-gallery-thumbnails::-webkit-scrollbar { display: none; }`}
+        </style>
+      )}
+      <h3 className={`font-bold text-gray-800 mb-3 flex items-center gap-2 ${isMobile ? 'text-sm' : 'text-lg'}`}>
+        <span className={isMobile ? 'text-base' : 'text-xl'}>📸</span>
         {title} ({currentIndex + 1} / {validImages.length})
       </h3>
 
       <div className="relative bg-gray-900 rounded-lg overflow-hidden border-2 border-gray-300 shadow-lg">
         {/* Main Image */}
-        <div className="relative bg-black flex items-center justify-center" style={{ height: '400px' }}>
+        <div className="relative bg-black flex items-center justify-center" style={{ height: isMobile ? '250px' : '400px' }}>
           <img
             src={validImages[currentIndex]}
             alt={`${title} ${currentIndex + 1}`}
@@ -87,14 +101,14 @@ const ImageGallery = ({ images, title = "Gallery" }) => {
           <>
             <button
               onClick={goToPrevious}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all shadow-lg"
+              className={`absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all shadow-lg ${isMobile ? 'w-8 h-8 text-sm' : 'w-10 h-10'}`}
               title="Previous (Arrow Left)"
             >
               ←
             </button>
             <button
               onClick={goToNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all shadow-lg"
+              className={`absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all shadow-lg ${isMobile ? 'w-8 h-8 text-sm' : 'w-10 h-10'}`}
               title="Next (Arrow Right)"
             >
               →
@@ -103,21 +117,29 @@ const ImageGallery = ({ images, title = "Gallery" }) => {
         )}
 
         {/* Image Counter */}
-        <div className="absolute bottom-2 right-2 bg-black/60 text-white px-3 py-1 rounded text-sm">
+        <div className={`absolute bottom-2 right-2 bg-black/60 text-white px-3 py-1 rounded ${isMobile ? 'text-xs' : 'text-sm'}`}>
           {currentIndex + 1} / {validImages.length}
         </div>
       </div>
 
       {/* Thumbnails */}
       {validImages.length > 1 && (
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
+        <div className={`image-gallery-thumbnails mt-3 ${
+          isMobile
+            ? 'grid grid-cols-6 gap-2'
+            : 'flex gap-2 overflow-x-auto pb-2'
+        }`}
+          style={isMobile ? {} : thumbnailScrollStyle}
+        >
           {validImages.map((img, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`flex-shrink-0 w-16 h-16 rounded border-2 overflow-hidden transition-all ${
+              className={`rounded border-2 overflow-hidden transition-all ${
+                isMobile ? 'w-full aspect-square' : 'flex-shrink-0 w-16 h-16'
+              } ${
                 index === currentIndex
-                  ? 'border-blue-500 scale-110 shadow-lg'
+                  ? 'border-blue-500 shadow-lg' + (isMobile ? '' : ' scale-110')
                   : 'border-gray-300 hover:border-blue-300'
               }`}
             >
@@ -131,8 +153,8 @@ const ImageGallery = ({ images, title = "Gallery" }) => {
         </div>
       )}
 
-      {/* Keyboard Hint */}
-      {validImages.length > 1 && (
+      {/* Keyboard Hint - Hidden on Mobile */}
+      {validImages.length > 1 && !isMobile && (
         <p className="text-xs text-gray-500 mt-2 text-center">
           Use arrow keys ← → to navigate
         </p>

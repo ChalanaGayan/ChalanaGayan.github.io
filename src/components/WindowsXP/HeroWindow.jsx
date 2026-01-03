@@ -1,35 +1,39 @@
 import { useState } from 'react';
 import Screensaver from './Screensaver';
+import { useIsMobileContext } from '../../context/MobileContext';
 
 const HeroWindow = () => {
   const [showSlideshow, setShowSlideshow] = useState(false);
+  const isMobile = useIsMobileContext();
 
   if (showSlideshow) {
     return <Screensaver onDismiss={() => setShowSlideshow(false)} userName="Chalana Gayan" />;
   }
 
   return (
-    <div className="h-full flex items-center justify-center bg-white overflow-auto p-8">
+    <div className={`h-full bg-white ${isMobile ? 'overflow-auto' : 'overflow-auto flex items-center justify-center p-8'}`}>
       {/* Main Content Card */}
-      <div className="relative bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-300 max-w-5xl w-full">
+      <div className={`relative bg-white ${isMobile ? 'w-full min-h-full' : 'rounded-lg shadow-lg border-2 border-gray-300 max-w-5xl w-full overflow-hidden'}`}>
         {/* Header Banner */}
-        <div className="bg-gray-100 p-6 text-center border-b-2 border-gray-300">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome to My Portfolio</h1>
-          <p className="text-gray-700 text-lg">Explore my journey in Computer Science & Software Engineering</p>
+        <div className={`bg-gray-100 text-center border-b-2 border-gray-300 ${isMobile ? 'p-4' : 'p-6'}`}>
+          <h1 className={`font-bold text-gray-900 mb-2 ${isMobile ? 'text-2xl' : 'text-4xl'}`}>Welcome to My Portfolio</h1>
+          <p className={`text-gray-700 ${isMobile ? 'text-sm' : 'text-lg'}`}>Explore my journey in Computer Science & Software Engineering</p>
         </div>
 
         {/* Content */}
-        <div className="p-8">
+        <div className={isMobile ? 'p-4' : 'p-8'}>
           {/* Introduction */}
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-black mb-3">About This Portfolio</h2>
-            <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              This is a Windows XP themed interactive portfolio showcasing my professional background, technical skills, projects, and achievements. Navigate through different folders on the desktop or use the Start menu to explore various sections of my work.
+          <div className={`text-center ${isMobile ? 'mb-6' : 'mb-8'}`}>
+            <h2 className={`font-bold text-black mb-3 ${isMobile ? 'text-lg' : 'text-2xl'}`}>About This Portfolio</h2>
+            <p className={`text-gray-700 leading-relaxed max-w-3xl mx-auto ${isMobile ? 'text-sm' : ''}`}>
+              {isMobile
+                ? 'This is an Android KitKat themed interactive portfolio showcasing my professional background, technical skills, projects, and achievements. Tap on apps to explore different sections of my work.'
+                : 'This is a Windows XP themed interactive portfolio showcasing my professional background, technical skills, projects, and achievements. Navigate through different folders on the desktop or use the Start menu to explore various sections of my work.'}
             </p>
           </div>
 
           {/* Action Button */}
-          <div className="flex justify-center mb-8">
+          <div className={`flex justify-center ${isMobile ? 'mb-6' : 'mb-8'}`}>
             <ActionButton
               onClick={() => setShowSlideshow(true)}
               label="View Name Slideshow"
@@ -38,11 +42,11 @@ const HeroWindow = () => {
           </div>
 
           {/* Portfolio Features */}
-          <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-300">
-            <h3 className="text-xl font-bold text-black mb-5 text-center">
+          <div className={`bg-gray-50 rounded-lg border-2 border-gray-300 ${isMobile ? 'p-4' : 'p-6'}`}>
+            <h3 className={`font-bold text-black text-center ${isMobile ? 'text-base mb-4' : 'text-xl mb-5'}`}>
               Explore My Portfolio Sections
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className={`grid gap-4 ${isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
               <FeatureItem
                 title="About Me"
                 icon="/profile-pic.png"
@@ -69,9 +73,9 @@ const HeroWindow = () => {
                 description="Get in touch with me through various channels and download my CV. Includes email, social media links, and contact information."
               />
               <FeatureItem
-                title="Browser"
+                title="Minesweeper Game"
                 icon="/desktop_pc/folder_windowsXP.png"
-                description="A functional Windows XP-style Internet Explorer browser to explore the web with a nostalgic experience."
+                description="Classic Minesweeper puzzle game! Use logic to find all the mines without clicking on them."
               />
             </div>
           </div>

@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { experiences } from '../../constants';
+import { useIsMobileContext } from '../../context/MobileContext';
+import { useWindowNavigation } from '../../context/WindowNavigationContext';
 
 const ProjectsWindow = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [history, setHistory] = useState([null]);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const isMobile = useIsMobileContext();
+  const windowNav = useWindowNavigation();
 
   const navigateToProject = (project) => {
     const newHistory = history.slice(0, historyIndex + 1);
@@ -14,48 +18,67 @@ const ProjectsWindow = () => {
     setSelectedProject(project);
   };
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
     if (historyIndex > 0) {
       const newIndex = historyIndex - 1;
       setHistoryIndex(newIndex);
       setSelectedProject(history[newIndex]);
     }
-  };
+  }, [historyIndex, history]);
 
-  const goForward = () => {
+  const goForward = useCallback(() => {
     if (historyIndex < history.length - 1) {
       const newIndex = historyIndex + 1;
       setHistoryIndex(newIndex);
       setSelectedProject(history[newIndex]);
     }
-  };
+  }, [historyIndex, history]);
+
+  // Register back handler for mobile when there's navigation history
+  useEffect(() => {
+    if (!isMobile) return;
+
+    if (historyIndex > 0) {
+      windowNav.registerWindowBackHandler(goBack);
+    } else {
+      windowNav.unregisterWindowBackHandler();
+    }
+
+    return () => {
+      windowNav.unregisterWindowBackHandler();
+    };
+  }, [isMobile, historyIndex, goBack]);
 
   return (
     <div className="h-full flex">
-      {/* Left Sidebar - Folder Navigation */}
-      <div className="w-48 border-r border-gray-300 bg-white">
-        <div className="p-3">
-          <div className="mb-4">
-            <h3 className="text-xs font-bold text-black mb-2">Folders</h3>
-            <FolderItem label="My Projects" active />
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Toolbar */}
-        <div className="border-b border-gray-300 bg-white p-2">
-          <div className="flex items-center gap-2">
-            <ToolbarButton onClick={goBack} disabled={historyIndex <= 0}>Back</ToolbarButton>
-            <ToolbarButton onClick={goForward} disabled={historyIndex >= history.length - 1}>Forward</ToolbarButton>
-            <div className="w-px h-6 bg-gray-300 mx-1"></div>
-            <ToolbarButton onClick={() => navigateToProject(null)}>Folders</ToolbarButton>
-            <div className="flex-1 flex items-center gap-2 bg-white border border-gray-400 px-2 py-1 rounded">
-              <span className="text-xs text-black">My Computer &gt; Projects</span>
+      {/* Left Sidebar - Folder Navigation - Hidden on Mobile */}
+      {!isMobile && (
+        <div className="w-48 border-r border-gray-300 bg-white">
+          <div className="p-3">
+            <div className="mb-4">
+              <h3 className="text-xs font-bold text-black mb-2">Folders</h3>
+              <FolderItem label="My Projects" active />
             </div>
           </div>
         </div>
+      )}
+
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col">
+        {/* Toolbar - Hidden on Mobile */}
+        {!isMobile && (
+          <div className="border-b border-gray-300 bg-white p-2">
+            <div className="flex items-center gap-2">
+              <ToolbarButton onClick={goBack} disabled={historyIndex <= 0}>Back</ToolbarButton>
+              <ToolbarButton onClick={goForward} disabled={historyIndex >= history.length - 1}>Forward</ToolbarButton>
+              <div className="w-px h-6 bg-gray-300 mx-1"></div>
+              <ToolbarButton onClick={() => navigateToProject(null)}>Folders</ToolbarButton>
+              <div className="flex-1 flex items-center gap-2 bg-white border border-gray-400 px-2 py-1 rounded">
+                <span className="text-xs text-black">My Computer &gt; Projects</span>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* File List View */}
         <div className="flex-1 overflow-auto bg-white p-4">

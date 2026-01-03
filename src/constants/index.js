@@ -260,7 +260,7 @@ const experiences = [
             "Developing a Train Booking System that allows users to search for trains, select seats, and complete bookings through a user-friendly interface.",
             "Utilizing technologies like Node.js, Express, React, and MySQL.",
         ],
-        link: "https://github.com/ChalanaGayan/Train-Booking-System",
+        link: "https://github.com/ChalanaGayan/TrainBooking",
         teamPhotos: [],
     },
     {
@@ -286,7 +286,7 @@ const experiences = [
             "Developed an IoT solution leveraging machine learning to detect and identify machine faults based on sound analysis.",
             "Technologies: Python, OpenCV, JavaScript, Flask, Node.js, MQTT.",
         ],
-        link: "https://github.com/ChalanaGayan/MechaPulse_2024",
+        link: "https://github.com/ChalanaGayan/MechaPulse",
         teamPhotos: [],
     },
     {

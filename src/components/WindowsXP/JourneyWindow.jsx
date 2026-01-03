@@ -1,12 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ImageGallery from './ImageGallery';
+import { useIsMobileContext } from '../../context/MobileContext';
+import { useWindowNavigation } from '../../context/WindowNavigationContext';
 
 const JourneyWindow = () => {
   const [selectedMilestone, setSelectedMilestone] = useState(null);
+  const isMobile = useIsMobileContext();
+  const windowNav = useWindowNavigation();
 
   const getImages = (folder, count) => {
     return Array.from({ length: count }, (_, i) => `/journey/${folder}/${i + 1}.webp`);
   };
+
+  // Register back handler for mobile when milestone is selected
+  useEffect(() => {
+    if (!isMobile) return;
+
+    if (selectedMilestone) {
+      windowNav.registerWindowBackHandler(() => {
+        setSelectedMilestone(null);
+      });
+    } else {
+      windowNav.unregisterWindowBackHandler();
+    }
+
+    return () => {
+      windowNav.unregisterWindowBackHandler();
+    };
+  }, [isMobile, selectedMilestone]);
 
   const milestones = [
     {
@@ -138,41 +159,45 @@ const JourneyWindow = () => {
   return (
     <>
       <div className="h-full flex">
-        {/* Left Sidebar */}
-        <div className="w-64 border-r-2 border-gray-300 bg-white overflow-auto">
-          <div className="p-3 border-b-2 border-gray-300 bg-white sticky top-0 z-10">
-            <h3 className="text-sm font-bold text-black">
-              Journey Folders
-            </h3>
+        {/* Left Sidebar - Hidden on Mobile */}
+        {!isMobile && (
+          <div className="w-64 border-r-2 border-gray-300 bg-white overflow-auto">
+            <div className="p-3 border-b-2 border-gray-300 bg-white sticky top-0 z-10">
+              <h3 className="text-sm font-bold text-black">
+                Journey Folders
+              </h3>
+            </div>
+            <div className="p-3 space-y-2">
+              {milestones.map((milestone, index) => (
+                <FolderItem
+                  key={index}
+                  milestone={milestone}
+                  onClick={() => setSelectedMilestone(milestone)}
+                  active={selectedMilestone?.title === milestone.title}
+                />
+              ))}
+            </div>
           </div>
-          <div className="p-3 space-y-2">
-            {milestones.map((milestone, index) => (
-              <FolderItem
-                key={index}
-                milestone={milestone}
-                onClick={() => setSelectedMilestone(milestone)}
-                active={selectedMilestone?.title === milestone.title}
-              />
-            ))}
-          </div>
-        </div>
+        )}
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
-          {/* Toolbar */}
-          <div className="border-b-2 border-gray-300 bg-white p-2">
-            <div className="flex items-center gap-2">
-              <ToolbarButton onClick={() => setSelectedMilestone(null)}>Home</ToolbarButton>
-              <div className="flex-1 flex items-center gap-2 bg-white border-2 border-gray-400 px-3 py-1 rounded">
-                <span className="text-xs text-black">
-                  My Journey {selectedMilestone && `> ${selectedMilestone.title}`}
-                </span>
+          {/* Toolbar - Hidden on Mobile */}
+          {!isMobile && (
+            <div className="border-b-2 border-gray-300 bg-white p-2">
+              <div className="flex items-center gap-2">
+                <ToolbarButton onClick={() => setSelectedMilestone(null)}>Home</ToolbarButton>
+                <div className="flex-1 flex items-center gap-2 bg-white border-2 border-gray-400 px-3 py-1 rounded">
+                  <span className="text-xs text-black">
+                    My Journey {selectedMilestone && `> ${selectedMilestone.title}`}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Content Area */}
-          <div className="flex-1 overflow-auto bg-white p-6">
+          <div className={`flex-1 overflow-auto bg-white ${isMobile ? 'p-3' : 'p-6'}`}>
             {selectedMilestone ? (
               <MilestoneDetail milestone={selectedMilestone} />
             ) : (
@@ -185,7 +210,7 @@ const JourneyWindow = () => {
             <span className="text-xs text-gray-700">
               {selectedMilestone
                 ? `${selectedMilestone.images.length} photos | ${selectedMilestone.highlights.length} highlights`
-                : `${milestones.length} milestones in your journey`}
+                : `${milestones.length} milestones in my journey`}
             </span>
           </div>
         </div>
@@ -228,40 +253,42 @@ const ToolbarButton = ({ children, onClick }) => {
 };
 
 const OverviewPage = ({ milestones, onSelect }) => {
+  const isMobile = useIsMobileContext();
+
   return (
     <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-black mb-2">
+      <div className={isMobile ? 'mb-4' : 'mb-6'}>
+        <h2 className={`font-bold text-black mb-2 ${isMobile ? 'text-lg' : 'text-2xl'}`}>
           My Professional & Academic Journey
         </h2>
-        <p className="text-gray-600">
+        <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-base'}`}>
           Explore the milestones, experiences, and achievements that shaped my career in software engineering and AI/ML.
         </p>
-        <div className="h-1 w-32 bg-gray-800 mt-3"></div>
+        <div className={`h-1 bg-gray-800 mt-3 ${isMobile ? 'w-20' : 'w-32'}`}></div>
       </div>
 
-      <div className="space-y-4">
+      <div className={isMobile ? 'space-y-3' : 'space-y-4'}>
         {milestones.map((milestone, index) => (
           <div
             key={index}
             onClick={() => onSelect(milestone)}
-            className="border-2 border-gray-300 rounded p-4 hover:border-gray-500 hover:shadow-lg transition-all cursor-pointer bg-white"
+            className={`border-2 border-gray-300 rounded hover:border-gray-500 hover:shadow-lg transition-all cursor-pointer bg-white ${isMobile ? 'p-3' : 'p-4'}`}
           >
             <div className="flex items-start gap-4">
-              <div className="flex-1">
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <h3 className="text-lg font-bold text-black">{milestone.title}</h3>
-                    <p className="text-sm text-gray-700 font-semibold">{milestone.role}</p>
+              <div className="flex-1 min-w-0">
+                <div className={`flex ${isMobile ? 'flex-col gap-1' : 'items-start justify-between'} mb-2`}>
+                  <div className="min-w-0 flex-1">
+                    <h3 className={`font-bold text-black break-words ${isMobile ? 'text-sm' : 'text-lg'}`}>{milestone.title}</h3>
+                    <p className={`text-gray-700 font-semibold break-words ${isMobile ? 'text-xs' : 'text-sm'}`}>{milestone.role}</p>
                   </div>
-                  <span className="text-xs text-gray-500 whitespace-nowrap ml-4">{milestone.year}</span>
+                  <span className={`text-gray-500 ${isMobile ? 'text-[10px]' : 'text-xs whitespace-nowrap ml-4'}`}>{milestone.year}</span>
                 </div>
-                <p className="text-sm text-gray-600 mb-3">{milestone.description}</p>
+                <p className={`text-gray-600 mb-3 ${isMobile ? 'text-xs' : 'text-sm'}`}>{milestone.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {milestone.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded border border-gray-300 font-medium"
+                      className={`bg-gray-100 text-gray-700 rounded border border-gray-300 font-medium ${isMobile ? 'px-2 py-0.5 text-[10px]' : 'px-2 py-1 text-xs'}`}
                     >
                       {tag}
                     </span>
@@ -277,23 +304,25 @@ const OverviewPage = ({ milestones, onSelect }) => {
 };
 
 const MilestoneDetail = ({ milestone }) => {
+  const isMobile = useIsMobileContext();
+
   return (
     <div>
       {/* Header */}
-      <div className="mb-6 pb-4 border-b-2 border-gray-300">
-        <div className="flex items-start gap-3 mb-3">
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold text-black mb-1">{milestone.title}</h2>
-            <p className="text-base font-semibold text-gray-700 mb-1">{milestone.role}</p>
-            <p className="text-sm text-gray-600">{milestone.year}</p>
+      <div className={`pb-4 border-b-2 border-gray-300 ${isMobile ? 'mb-4' : 'mb-6'}`}>
+        <div className={`flex items-start gap-3 ${isMobile ? 'mb-2' : 'mb-3'}`}>
+          <div className="flex-1 min-w-0">
+            <h2 className={`font-bold text-black mb-1 ${isMobile ? 'text-lg break-words' : 'text-2xl'}`}>{milestone.title}</h2>
+            <p className={`font-semibold text-gray-700 mb-1 ${isMobile ? 'text-sm break-words' : 'text-base'}`}>{milestone.role}</p>
+            <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-sm'}`}>{milestone.year}</p>
           </div>
         </div>
-        <p className="text-sm text-gray-700 leading-relaxed mb-3">{milestone.description}</p>
+        <p className={`text-gray-700 leading-relaxed mb-3 ${isMobile ? 'text-xs' : 'text-sm'}`}>{milestone.description}</p>
         <div className="flex flex-wrap gap-2">
           {milestone.tags.map((tag, i) => (
             <span
               key={i}
-              className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded border border-gray-300 font-semibold"
+              className={`bg-gray-100 text-gray-700 rounded border border-gray-300 font-semibold ${isMobile ? 'px-2 py-0.5 text-[10px]' : 'px-3 py-1 text-xs'}`}
             >
               {tag}
             </span>
@@ -302,15 +331,15 @@ const MilestoneDetail = ({ milestone }) => {
       </div>
 
       {/* Highlights */}
-      <div className="mb-6">
-        <h3 className="text-lg font-bold text-black mb-3">
+      <div className={isMobile ? 'mb-4' : 'mb-6'}>
+        <h3 className={`font-bold text-black ${isMobile ? 'text-base mb-2' : 'text-lg mb-3'}`}>
           Key Highlights
         </h3>
         <div className="grid gap-2">
           {milestone.highlights.map((highlight, idx) => (
-            <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-gray-700 font-bold text-lg mt-0.5">•</span>
-              <p className="text-sm text-gray-700 flex-1 leading-relaxed">{highlight}</p>
+            <div key={idx} className={`flex items-start gap-2 bg-gray-50 rounded-lg border border-gray-200 ${isMobile ? 'p-2' : 'p-3'}`}>
+              <span className={`text-gray-700 font-bold mt-0.5 ${isMobile ? 'text-sm' : 'text-lg'}`}>•</span>
+              <p className={`text-gray-700 flex-1 leading-relaxed break-words ${isMobile ? 'text-xs' : 'text-sm'}`}>{highlight}</p>
             </div>
           ))}
         </div>
@@ -318,19 +347,19 @@ const MilestoneDetail = ({ milestone }) => {
 
       {/* Projects */}
       {milestone.projects && milestone.projects.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-lg font-bold text-black mb-3">
+        <div className={isMobile ? 'mb-4' : 'mb-6'}>
+          <h3 className={`font-bold text-black ${isMobile ? 'text-base mb-2' : 'text-lg mb-3'}`}>
             Projects & Contributions
           </h3>
-          <div className="space-y-3">
+          <div className={isMobile ? 'space-y-2' : 'space-y-3'}>
             {milestone.projects.map((project, idx) => (
-              <div key={idx} className="bg-white border-2 border-gray-300 rounded p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-bold text-black text-sm">{project.name}</h4>
-                  <span className="text-xs text-gray-500 whitespace-nowrap ml-4">{project.period}</span>
+              <div key={idx} className={`bg-white border-2 border-gray-300 rounded ${isMobile ? 'p-3' : 'p-4'}`}>
+                <div className={`flex ${isMobile ? 'flex-col gap-1' : 'justify-between items-start'} mb-2`}>
+                  <h4 className={`font-bold text-black break-words ${isMobile ? 'text-xs' : 'text-sm'}`}>{project.name}</h4>
+                  <span className={`text-gray-500 ${isMobile ? 'text-[10px]' : 'text-xs whitespace-nowrap ml-4'}`}>{project.period}</span>
                 </div>
-                <p className="text-xs text-gray-700 font-semibold mb-2">{project.tech}</p>
-                <p className="text-sm text-gray-700 leading-relaxed">{project.description}</p>
+                <p className={`text-gray-700 font-semibold mb-2 break-words ${isMobile ? 'text-[10px] leading-relaxed' : 'text-xs'}`}>{project.tech}</p>
+                <p className={`text-gray-700 leading-relaxed ${isMobile ? 'text-xs' : 'text-sm'}`}>{project.description}</p>
               </div>
             ))}
           </div>

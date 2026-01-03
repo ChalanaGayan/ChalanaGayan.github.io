@@ -1,13 +1,17 @@
+import { useIsMobileContext } from '../../context/MobileContext';
+
 const AboutWindow = () => {
+  const isMobile = useIsMobileContext();
+
   return (
-    <div className="p-6 bg-gray-50 h-full overflow-auto">
+    <div className={`bg-gray-50 h-full overflow-auto ${isMobile ? 'p-4' : 'p-6'}`}>
       {/* Header Section with Photo and Name */}
-      <div className="mb-6 bg-white p-6 rounded-lg border-2 border-gray-300 shadow-sm">
+      <div className={`mb-6 bg-white rounded-lg border-2 border-gray-300 shadow-sm ${isMobile ? 'p-4' : 'p-6'}`}>
         {/* Photo and Name Section */}
-        <div className="flex flex-col items-center mb-6">
+        <div className={`flex flex-col items-center ${isMobile ? 'mb-4' : 'mb-6'}`}>
           {/* Photo */}
-          <div className="flex-shrink-0 mb-4">
-            <div className=" overflow-hidden w-48">
+          <div className={`flex-shrink-0 ${isMobile ? 'mb-3' : 'mb-4'}`}>
+            <div className={`overflow-hidden ${isMobile ? 'w-32' : 'w-48'}`}>
               <img
                 src="/profile-pic.png"
                 alt="Chalana Gayan"
@@ -18,8 +22,8 @@ const AboutWindow = () => {
 
           {/* Name & Main Title */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2">Chalana Dhanawardhana</h2>
-            <p className="text-lg text-gray-600">Final Year Undergraduate | Full Stack Software Engineer | AI & ML | Volunteer Leader</p>
+            <h2 className={`font-bold text-gray-900 mb-2 ${isMobile ? 'text-xl' : 'text-4xl'}`}>Chalana Dhanawardhana</h2>
+            <p className={`text-gray-600 ${isMobile ? 'text-xs' : 'text-lg'}`}>Final Year Undergraduate | Full Stack Software Engineer | AI & ML | Volunteer Leader</p>
           </div>
         </div>
 
@@ -27,37 +31,37 @@ const AboutWindow = () => {
         <div className="w-full h-px bg-gray-300 my-4"></div>
 
         {/* Company Logos Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className={`grid gap-6 ${isMobile ? 'grid-cols-2 gap-4' : 'grid-cols-2 md:grid-cols-4'}`}>
           {/* Logo 1 */}
           <div className="flex flex-col items-center gap-2">
-            <div className="h-16 flex items-center justify-center">
-              <img src="/companies/university-of-moratuwa.png" alt="University of Moratuwa" className="w-16 h-auto object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
+            <div className={`flex items-center justify-center ${isMobile ? 'h-12' : 'h-16'}`}>
+              <img src="/companies/university-of-moratuwa.png" alt="University of Moratuwa" className={`h-auto object-contain ${isMobile ? 'w-12' : 'w-16'}`} onError={(e) => { e.target.style.display = 'none'; }} />
             </div>
-            <p className="text-xs text-gray-700 font-medium text-center leading-tight">CSE Final Year Undergraduate</p>
+            <p className={`text-gray-700 font-medium text-center leading-tight ${isMobile ? 'text-[10px]' : 'text-xs'}`}>CSE Final Year Undergraduate</p>
           </div>
 
           {/* Logo 2 */}
           <div className="flex flex-col items-center gap-2">
-            <div className="h-16 flex items-center justify-center">
-              <img src="/companies/surecore.png" alt="Surecore" className="w-12 h-auto object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
+            <div className={`flex items-center justify-center ${isMobile ? 'h-12' : 'h-16'}`}>
+              <img src="/companies/surecore.png" alt="Surecore" className={`h-auto object-contain ${isMobile ? 'w-10' : 'w-12'}`} onError={(e) => { e.target.style.display = 'none'; }} />
             </div>
-            <p className="text-xs text-gray-700 font-medium text-center leading-tight">Associate Software Engineer</p>
+            <p className={`text-gray-700 font-medium text-center leading-tight ${isMobile ? 'text-[10px]' : 'text-xs'}`}>Associate Software Engineer</p>
           </div>
 
           {/* Logo 3 */}
           <div className="flex flex-col items-center gap-2">
-            <div className="h-16 flex items-center justify-center">
-              <img src="/companies/wso2.png" alt="WSO2" className="w-24 h-auto object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
+            <div className={`flex items-center justify-center ${isMobile ? 'h-12' : 'h-16'}`}>
+              <img src="/companies/wso2.png" alt="WSO2" className={`h-auto object-contain ${isMobile ? 'w-16' : 'w-24'}`} onError={(e) => { e.target.style.display = 'none'; }} />
             </div>
-            <p className="text-xs text-gray-700 font-medium text-center leading-tight">Ex-Software Engineering Intern</p>
+            <p className={`text-gray-700 font-medium text-center leading-tight ${isMobile ? 'text-[10px]' : 'text-xs'}`}>Ex-Software Engineering Intern</p>
           </div>
 
           {/* Logo 4 */}
           <div className="flex flex-col items-center gap-2">
-            <div className="h-16 flex items-center justify-center">
-              <img src="/companies/sasnaka-sansada.png" alt="Sasnaka Sansada" className="w-28 h-auto object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
+            <div className={`flex items-center justify-center ${isMobile ? 'h-12' : 'h-16'}`}>
+              <img src="/companies/sasnaka-sansada.png" alt="Sasnaka Sansada" className={`h-auto object-contain ${isMobile ? 'w-20' : 'w-28'}`} onError={(e) => { e.target.style.display = 'none'; }} />
             </div>
-            <p className="text-xs text-gray-700 font-medium text-center leading-tight">Deputy Pillar Head</p>
+            <p className={`text-gray-700 font-medium text-center leading-tight ${isMobile ? 'text-[10px]' : 'text-xs'}`}>Deputy Pillar Head</p>
           </div>
         </div>
       </div>
