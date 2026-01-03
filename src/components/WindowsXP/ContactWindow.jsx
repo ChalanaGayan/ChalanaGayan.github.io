@@ -4,8 +4,8 @@ const ContactWindow = () => {
   const [activeTab, setActiveTab] = useState('contact');
 
   // CV Google Drive direct download link (convert view link to download link)
-  const cvUrl = 'https://drive.google.com/file/d/1H5ZhnRt0K1pvOdNb7o5GqoouHbxdWoiy/preview';
-  const cvDownloadUrl = 'https://drive.google.com/uc?export=download&id=1H5ZhnRt0K1pvOdNb7o5GqoouHbxdWoiy';
+  const cvUrl = 'https://drive.google.com/file/d/13AazL-m7Q4SlXDa2P8-RP04k03S10IT3/preview';
+  const cvDownloadUrl = 'https://drive.google.com/uc?export=download&id=13AazL-m7Q4SlXDa2P8-RP04k03S10IT3';
 
   return (
     <div className="h-full flex flex-col bg-white">
@@ -71,12 +71,12 @@ const ContactWindow = () => {
               </h3>
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div>
-                  <p className="text-gray-700 font-mono text-lg font-semibold">chalana.dev@gmail.com</p>
+                  <p className="text-gray-700 font-mono text-lg font-semibold">gayanchalana@gmail.com</p>
                   <p className="text-gray-500 text-sm mt-1">Response time: Within 24 hours</p>
                 </div>
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText('chalana.dev@gmail.com');
+                    navigator.clipboard.writeText('gayanchalana@gmail.com');
                     alert('Email copied to clipboard!');
                   }}
                   className="px-6 py-3 rounded bg-gray-800 hover:bg-gray-700 text-white font-semibold transition-all shadow"
@@ -104,7 +104,7 @@ const ContactWindow = () => {
                 />
                 <SocialLink
                   title="WhatsApp"
-                  url="https://wa.me/message/DR6JXIW5EVGLJ1"
+                  url="https://wa.me/+94779635764"
                   description="Quick messaging"
                 />
                 <SocialLink

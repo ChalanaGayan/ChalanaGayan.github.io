@@ -1,8 +1,15 @@
-# React + Vite
+# Chalana Gayan - Interactive Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive portfolio website featuring a nostalgic Windows XP-inspired design alongside contemporary layouts. Built with React, Vite, Tailwind CSS, and Three.js for immersive 3D experiences.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Windows XP Theme**: Retro desktop interface with interactive windows and taskbar
+- **3D Canvas**: Interactive 3D elements powered by Three.js
+- **Responsive Design**: Beautiful layouts for all screen sizes
+- **Fast Performance**: Built with Vite for optimal load times
+- **Showcase**: Projects, skills, achievements, and journey timeline
+
+## 🚀 Technologies
+
+React • Vite • Tailwind CSS • Three.js • JavaScript

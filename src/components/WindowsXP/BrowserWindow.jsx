@@ -1,9 +1,9 @@
 import { useState, useRef } from 'react';
 
 const BrowserWindow = () => {
-  const [url, setUrl] = useState('https://chalanagayan.github.io/');
-  const [inputUrl, setInputUrl] = useState('https://chalanagayan.github.io/');
-  const [history, setHistory] = useState(['https://chalanagayan.github.io/']);
+  const [url, setUrl] = useState('https://www.chalanagayan.me');
+  const [inputUrl, setInputUrl] = useState('https://www.chalanagayan.me');
+  const [history, setHistory] = useState(['https://www.chalanagayan.me']);
   const [historyIndex, setHistoryIndex] = useState(0);
   const iframeRef = useRef(null);
 
@@ -49,7 +49,7 @@ const BrowserWindow = () => {
   };
 
   const handleHome = () => {
-    const homeUrl = 'https://chalanagayan.github.io/';
+    const homeUrl = 'https://www.chalanagayan.me';
     setUrl(homeUrl);
     setInputUrl(homeUrl);
 
