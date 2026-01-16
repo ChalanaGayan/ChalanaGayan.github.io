@@ -4,8 +4,8 @@ const ContactWindow = () => {
   const [activeTab, setActiveTab] = useState('contact');
 
   // CV Google Drive direct download link (convert view link to download link)
-  const cvUrl = 'https://drive.google.com/file/d/13AazL-m7Q4SlXDa2P8-RP04k03S10IT3/preview';
-  const cvDownloadUrl = 'https://drive.google.com/uc?export=download&id=13AazL-m7Q4SlXDa2P8-RP04k03S10IT3';
+  const cvUrl = 'https://drive.google.com/file/d/1tutb1i-g2B_cZ9G-PVYa-rLARf6HozPQ/preview';
+  const cvDownloadUrl = 'https://drive.google.com/uc?export=download&id=1tutb1i-g2B_cZ9G-PVYa-rLARf6HozPQ';
 
   return (
     <div className="h-full flex flex-col bg-white">
